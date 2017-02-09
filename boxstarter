@@ -3,15 +3,10 @@ Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtec
 
 Update-ExecutionPolicy Unrestricted
 
-cinst -y Microsoft-Hyper-V-All -source windowsFeatures
-
 # Packages
 cinst -y cmder -pre
 cinst -y hyper
 cinst -y Gow
-
-## Node, npm
-cinst -y nodejs.install
 
 ## Git
 cinst -y git.install
@@ -26,35 +21,13 @@ npm install -g npm-windows-upgrade
 ## Editors
 cinst -y visualstudiocode
 
-## Visual Studio 2015
-cinst -y visualstudio2015community
-if (Test-PendingReboot) { Invoke-Reboot }
-
-## Ruby, Go, Python
-cinst -y ruby
-cinst -y ruby.devkit
-
-cinst -y golang
-
-cinst -y python
-cinst -y pip
-cinst -y easy.install
-
 if (Test-PendingReboot) { Invoke-Reboot }
 
 ## Basics
 cinst -y vlc
-cinst -y GoogleChrome
 cinst -y 7zip.install
 cinst -y sysinternals
-cinst -y DotNet3.5
 # cinst -y DotNet4.0 -- not needed on windows 8
 # cinst -y DotNet4.5 -- not needed on windows 10
 # cinst -y PowerShell -- not needed on windows 10
 if (Test-PendingReboot) { Invoke-Reboot }
-
-# Pinning Things
-Install-ChocolateyPinnedTaskBarItem "$env:programfiles\Google\Chrome\Application\chrome.exe"
-
-# Let's get Updates, too
-Install-WindowsUpdate -acceptEula
